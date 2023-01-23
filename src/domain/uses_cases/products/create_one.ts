@@ -8,6 +8,7 @@ export function buildCreateOneProduct (
         try {
             const product = makeProduct(itemInfo);
             const productCreated = await productsRepo.createItem(product, t);
+            await t.commit();
             return productCreated;
         } catch (error) {
             throw error;
