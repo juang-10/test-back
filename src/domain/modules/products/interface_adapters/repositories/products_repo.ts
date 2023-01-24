@@ -1,4 +1,4 @@
-import { IRead, IWrite } from "domain/interfaces/ioperations";
+import { IRead, IWrite } from "../../../../common/interfaces/ioperations";
 
 
 export class ProductsRepository implements IRead, IWrite {

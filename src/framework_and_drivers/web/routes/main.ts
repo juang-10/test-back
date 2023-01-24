@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { MainController } from '../../../interface_adapters/controllers/main_cont';
+import { MainController } from '../../../domain/common/controllers/main_cont';
 
 const mainCtrl = new MainController();
 

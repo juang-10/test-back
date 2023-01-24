@@ -1,4 +1,4 @@
-import { makeProduct } from "../../../domain/entities/product";
+import { makeProduct } from "../../enterprise_business_rules/entities";
 
 export function buildCreateOneProduct (
     productsRepo: any

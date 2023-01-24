@@ -1,7 +1,7 @@
-import { ProductsRepository } from "../../../interface_adapters/repositories/products_repository";
-import { ProductsPsqlRepository } from "../../../framework_and_drivers/storage/postgres/repositories/products/product_psql_repo";
-import { buildCreateOneProduct } from "./create_one";
-import { buildCountList, buildProductsList } from "./get_all";
+import { ProductsRepository } from "../interface_adapters/repositories/products_repo";
+import { ProductsPsqlRepository } from "../../../../framework_and_drivers/storage/postgres/repositories/products/product_psql_repo";
+import { buildCreateOneProduct } from "./use_cases/create_one";
+import { buildCountList, buildProductsList } from "./use_cases/get_all";
 
 const productsRepository: ProductsRepository = new ProductsRepository(
     new ProductsPsqlRepository()

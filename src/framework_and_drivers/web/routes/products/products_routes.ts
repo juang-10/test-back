@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { ProductsController } from '../../../interface_adapters/controllers/products_controller';
+import { ProductsController } from '../../../../domain/modules/products/interface_adapters/web/controllers/products_controller';
 
 const productsCtrl = new ProductsController();
 

@@ -1,11 +1,11 @@
 import Sequelize, { Transaction } from 'sequelize';
 import { database } from '../../../../../index';
-import { ProductsDal } from '../../models/product_dal';
-import { ProductDom } from '../../../../../domain/entities/product/product_dom';
+import { ProductsDal } from '../../models/product/product_dal';
+import { ProductDom } from '../../../../../domain/modules/products/enterprise_business_rules/entities/product_dom';
 import { keyMapper } from '../../../../../framework_and_drivers/helpers/key_mapper';
-import { IWrapper } from '../../../../../domain/interfaces/iwrappers';
-import { IFilter } from '../../../../../domain/interfaces/ifilter';
-import { IRead, IWrite } from '../../../../../domain/interfaces/ioperations';
+import { IWrapper } from '../../../../../domain/common/interfaces/iwrappers';
+import { IFilter } from '../../../../../domain/common/interfaces/ifilter';
+import { IRead, IWrite } from '../../../../../domain/common/interfaces/ioperations';
 
 export class ProductsPsqlRepository
   implements IRead, IWrite, IFilter, IWrapper<ProductsDal, ProductDom>

@@ -1,4 +1,4 @@
-import { HTTPCodesEnum } from '../../domain/dto/enums/errors_enums';
+import { HTTPCodesEnum } from '../dto/enums/errors_enums';
 
 export class MainController {
     get(req: any, res: any, next: any): void {

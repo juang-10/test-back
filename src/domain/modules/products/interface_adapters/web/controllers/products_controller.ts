@@ -1,9 +1,9 @@
-import { HTTPCodesEnum } from '../../domain/dto/enums/errors_enums';
-import BaseController from './bases/base_controller';
+import { HTTPCodesEnum } from '../../../../../common/dto/enums/errors_enums';
+import BaseController from '../../../../../common/bases/base_controller';
 import { productsMapper } from './mappers/products_mapper';
-import productsStore from '../../domain/uses_cases/products'
-import { ApiResponse } from '../../domain/dto/reponses/api_responses';
-import { ListResponse } from '../../domain/dto/reponses/list_responses';
+import productsStore from '../../../app_business_rules'
+import { ApiResponse } from '../../../../../common/dto/reponses/api_responses';
+import { ListResponse } from '../../../../../common/dto/reponses/list_responses';
 
 
 

@@ -1,6 +1,6 @@
-import { ProductDom } from "./../../../domain/entities/product/product_dom";
-import { ProductsApi } from '../../../domain/dto/api_models/products/products_api';
-import { IMapperAPI } from "../bases/imapperapi";
+import { ProductDom } from "../../../../enterprise_business_rules/entities/product_dom";
+import { ProductsApi } from '../../../../enterprise_business_rules/dto/products_api';
+import { IMapperAPI } from "../../../../../../common/bases/imapperapi";
 
 class ProductsMapper implements IMapperAPI<ProductsApi, ProductDom> {
 	
