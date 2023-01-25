@@ -6,6 +6,7 @@ import { keyMapper } from '../../../../../framework_and_drivers/helpers/key_mapp
 import { IWrapper } from '../../../../../domain/common/interfaces/iwrappers';
 import { IFilter } from '../../../../../domain/common/interfaces/ifilter';
 import { IRead, IWrite } from '../../../../../domain/common/interfaces/ioperations';
+import { ErrorStorage } from '../../../../../domain/common/dto/errors/storage_error';
 
 export class SalesPsqlRepository
 implements IRead, IWrite, IFilter, IWrapper<SalesDal, SalesDom>
@@ -29,8 +30,19 @@ implements IRead, IWrite, IFilter, IWrapper<SalesDal, SalesDom>
         }
     }
 
-    getItem(search: any) {
-        throw new Error('Method not implemented');
+    async getItem(searchCriter: any, transaction?: Transaction) {
+        try {
+            database.addModels([SalesDal]);
+            const resDal = await SalesDal.findOne({
+                where: searchCriter,
+                transaction,
+            });
+            if (!resDal) return null;
+            const resDom: SalesDom = this.fromDalToDom(resDal);
+            return resDom;
+        } catch (error) {
+            throw error
+        }
     }
 
     async createItem(item: any, transaction?: Transaction) {
@@ -48,12 +60,32 @@ implements IRead, IWrite, IFilter, IWrapper<SalesDal, SalesDom>
         }
     }
 
-    updateItem(id: string, item: any) {
-        throw new Error('Method not implemented');
+    async updateItem(id: string, item: any) {
+        try {
+            database.addModels([SalesDal]);
+            const toUpdate = await SalesDal.findByPk(id);
+            if (!toUpdate) return null;
+            const resDAL = await toUpdate.update(keyMapper.fromCamelToSnake(item));
+            const resDOM = this.fromDalToDom(resDAL);
+            return resDOM;
+        } catch (error) {
+            throw error
+        }
     }
 
-    deleteItem(search: any) {
-        throw new Error('Method not implemented');
+    async deleteItem(deleteCriter: any, transaction?: Transaction) {
+        try {
+            database.addModels([SalesDal]);
+            const toDelete = await SalesDal.findOne({
+                where: deleteCriter,
+                transaction,
+            });
+            if (!toDelete) return null;
+            const resDAL = await toDelete.destroy({ transaction });
+            return resDAL;
+        } catch (error) {
+            throw error;
+        }
     }
 
     async countItems(filter: any) {
