@@ -19,6 +19,12 @@ export class SalesDom {
         this.createdAt = created_at;
         this.updatedAt = updated_at;
     }
+
+    updateInfo(itemInfo: any) {
+		if (itemInfo.price) this.price = itemInfo.price;
+		if (itemInfo.quantity) this.quantity = itemInfo.quantity;
+		return Object.freeze(this);
+	}
 }
 
 export function buildMakeSales() {
