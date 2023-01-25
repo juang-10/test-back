@@ -5,7 +5,7 @@ import {  salesMapper } from "../controllers/mappers/sales_mapper";
 import salesService from '../../../../sales/app_business_rules'
 import { ApiResponse } from '../../../../../../domain/common/dto/reponses/api_responses';
 import { ListResponse } from '../../../../../../domain/common/dto/reponses/list_responses';
-// import { ListResponse } from '../../../../../common/dto/reponses/list_responses';
+import { ErrorBadRequest } from '../../../../../common/dto/errors/bad_request_error';
 
 export class SalesController extends BaseController {
 
@@ -43,10 +43,28 @@ export class SalesController extends BaseController {
     }
 
     async put(req: any, res: any, next: any): Promise<void> {
-        throw new Error("TO DO");
+        try {
+            const { idUpd } = req.params;
+            const idFloat = parseInt(idUpd)
+            const { id } = req.body;
+            console.log({id})
+            if (id !== idFloat) throw new ErrorBadRequest("ID don't match");
+            const resultDOM: any = await salesService.updateOne(id, req.body);
+            const resultAPI: any = salesMapper.fromDomToApi(resultDOM);
+            res.status(HTTPCodesEnum.SUCCESSFUL);
+            res.json(new ApiResponse(HTTPCodesEnum.CREATED, resultAPI));
+        } catch (error) {
+            next(error);
+        }
     }
 
     async delete(req: any, res: any, next: any): Promise<void> {
-        throw new Error("TO DO");
+        try {
+            const { id } = req.params;
+            await salesService.deleteOne(id);
+            res.sendStatus(HTTPCodesEnum.NOT_CONTENT);
+        } catch (error) {
+            next(error);
+        }
     }
 }
