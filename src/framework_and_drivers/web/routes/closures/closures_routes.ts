@@ -5,7 +5,7 @@ const closuresCtrl = new ClosuresController();
 
 const router = Router();
 
-// router.get('/get-all', closuresCtrl.get);
+router.get('/get-all', closuresCtrl.get);
 router.post('/create-one', closuresCtrl.post);
 
 export { router };
