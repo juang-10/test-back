@@ -11,22 +11,22 @@ export class ClosuresPsqlRepository
   implements IRead, IWrite, IFilter, IWrapper<ClosuresDal, ClosuresDom>
 {
   async getAllItems(opts: any, transaction?: Transaction) {
-    // try {
-    //   database.addModels([ClosuresDal]);
-    //   const resDal: any[] = await ClosuresDal.findAll({
-    //     where: this.filterApiToDal(opts.filter),
-    //     limit: opts.limit,
-    //     offset: opts.offset,
-    //     order: opts.sort,
-    //     attributes: opts.attributes,
-    //     transaction,
-    //   });
-    //   const resDom: ClosuresDom[] = resDal.map((res) => this.fromDalToDom(res));
-    //   return resDom;
-    // } catch (error) {
-    //   throw new Error("F");
+    try {
+      database.addModels([ClosuresDal]);
+      const resDal: any[] = await ClosuresDal.findAll({
+        where: this.filterApiToDal(opts.filter),
+        limit: opts.limit,
+        offset: opts.offset,
+        order: opts.sort,
+        attributes: opts.attributes,
+        transaction,
+      });
+      const resDom: ClosuresDom[] = resDal.map((res) => this.fromDalToDom(res));
+      return resDom;
+    } catch (error) {
+      throw new Error("F");
       
-    // }
+    }
   }
 
   getItem(search: any) {
