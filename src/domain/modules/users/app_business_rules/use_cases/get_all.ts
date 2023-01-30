@@ -1,4 +1,4 @@
-function buildSalesList(salesRepo: any) {
+function buildUsersList(salesRepo: any) {
 
 	return async function execute(filter: any, limit: number, offset: number, sort?: any) {
 		const opts = {
@@ -21,11 +21,11 @@ function buildCountList(salesRepo: any) {
 }
 
 const service = {
-	buildSalesList,
+	buildUsersList,
 	buildCountList,
 }
 export default service;
 export {
-	buildSalesList,
+	buildUsersList,
 	buildCountList,
 }

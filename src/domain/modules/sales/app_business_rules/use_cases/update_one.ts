@@ -11,7 +11,7 @@ export function buildUpdateSales(
         };
         const originalItem: any = await salesRepo.getItem(searchCriter);
         if (originalItem === null) throw new ErrorResourceNotFound(
-            "bank doesn't exist"
+            "sales doesn't exist"
         );
         originalItem.updateInfo(itemInfo);
         const itemUpdated = makeSales(originalItem);
