@@ -28,11 +28,17 @@ export class UsersDom {
     this.last_login = last_login;
   }
 
-  // updateInfo(itemInfo: any) {
-  //   if (itemInfo.name) this.name = itemInfo.name;
-  //   if (itemInfo.lastname) this.lastname = itemInfo.lastname;
-  //   return Object.freeze(this);
-  // }
+  updateInfo(itemInfo: any) {
+    if (itemInfo.name) this.name = itemInfo.name;
+    if (itemInfo.lastname) this.lastname = itemInfo.lastname;
+    if (itemInfo.password) this.password = itemInfo.password;
+    if (itemInfo.email) this.email = itemInfo.email;
+    if (itemInfo.role) this.role = itemInfo.role;
+    if (itemInfo.created_on) this.created_on = itemInfo.created_on;
+    if (itemInfo.last_login) this.last_login = itemInfo.last_login;
+
+    return Object.freeze(this);
+  }
 }
 
 export function buildMakeUsers() {

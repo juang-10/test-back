@@ -48,27 +48,27 @@ export class UsersController extends BaseController {
   }
 
   async put(req: any, res: any, next: any): Promise<void> {
-    // try {
-    //   const { idUpd } = req.params;
-    //   const idFloat = parseInt(idUpd);
-    //   const { id } = req.body;
-    //   if (id !== idFloat) throw new ErrorBadRequest("ID don't match");
-    //   const resultDOM: any = await usersService.updateOne(id, req.body);
-    //   const resultAPI: any = usersMapper.fromDomToApi(resultDOM);
-    //   res.status(HTTPCodesEnum.SUCCESSFUL);
-    //   res.json(new ApiResponse(HTTPCodesEnum.CREATED, resultAPI));
-    // } catch (error) {
-    //   next(error);
-    // }
+    try {
+      const { idUpd } = req.params;
+      const idFloat = parseInt(idUpd);
+      const { id } = req.body;
+      if (id !== idFloat) throw new ErrorBadRequest("ID don't match");
+      const resultDOM: any = await usersService.updateOne(id, req.body);
+      const resultAPI: any = usersMapper.fromDomToApi(resultDOM);
+      res.status(HTTPCodesEnum.SUCCESSFUL);
+      res.json(new ApiResponse(HTTPCodesEnum.CREATED, resultAPI));
+    } catch (error) {
+      next(error);
+    }
   }
 
   async delete(req: any, res: any, next: any): Promise<void> {
-    // try {
-    //   const { id } = req.params;
-    //   await usersService.deleteOne(id);
-    //   res.sendStatus(HTTPCodesEnum.NOT_CONTENT);
-    // } catch (error) {
-    //   next(error);
-    // }
+    try {
+      const { id } = req.params;
+      await usersService.deleteOne(id);
+      res.sendStatus(HTTPCodesEnum.NOT_CONTENT);
+    } catch (error) {
+      next(error);
+    }
   }
 }
