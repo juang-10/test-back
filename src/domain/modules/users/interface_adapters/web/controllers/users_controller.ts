@@ -8,27 +8,27 @@ import { ErrorBadRequest } from '../../../../../common/dto/errors/bad_request_er
 
 export class UsersController extends BaseController {
   async get(req: any, res: any, next: any): Promise<void> {
-    // try {
-    //   const { filter, limit, offset } = req.query;
-    //   const resultDom: any[] = await usersService.getList(
-    //     filter,
-    //     limit,
-    //     offset
-    //   );
-    //   const count: number = await usersService.countList(filter);
-    //   const resultApi: any[] = resultDom.map((result) =>
-    //     usersMapper.fromDomToApi(result)
-    //   );
-    //   res.status(HTTPCodesEnum.SUCCESSFUL);
-    //   res.json(
-    //     new ApiResponse(
-    //       HTTPCodesEnum.SUCCESSFUL,
-    //       new ListResponse(resultApi, count)
-    //     )
-    //   );
-    // } catch (error) {
-    //   next(error);
-    // }
+    try {
+      const { filter, limit, offset } = req.query;
+      const resultDom: any[] = await usersService.getList(
+        filter,
+        limit,
+        offset
+      );
+      const count: number = await usersService.countList(filter);
+      const resultApi: any[] = resultDom.map((result) =>
+        usersMapper.fromDomToApi(result)
+      );
+      res.status(HTTPCodesEnum.SUCCESSFUL);
+      res.json(
+        new ApiResponse(
+          HTTPCodesEnum.SUCCESSFUL,
+          new ListResponse(resultApi, count)
+        )
+      );
+    } catch (error) {
+      next(error);
+    }
   }
 
   async getById(req: any, res: any, next: any): Promise<void> {

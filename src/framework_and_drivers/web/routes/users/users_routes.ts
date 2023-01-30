@@ -6,7 +6,7 @@ const usersCtrl = new UsersController();
 
 const router = Router();
 
-// router.get('/get-all', salesCtrl.get);
+router.get('/get-all', usersCtrl.get);
 router.post('/create-one', usersCtrl.post);
 // router.delete('/:id/delete-one', salesCtrl.delete);
 // router.put('/:idUpd/update-one', salesCtrl.put);
