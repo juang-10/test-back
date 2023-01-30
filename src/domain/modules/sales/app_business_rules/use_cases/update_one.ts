@@ -16,7 +16,6 @@ export function buildUpdateSales(
         originalItem.updateInfo(itemInfo);
         const itemUpdated = makeSales(originalItem);
         const updatedServiceType = await salesRepo.updateItem(id, itemUpdated);
-        // updatedBankEvent(updatedServiceType, dateHandler, logger);
         return updatedServiceType;
     }
 }
